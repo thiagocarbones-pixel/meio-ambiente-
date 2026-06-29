@@ -1,58 +1,220 @@
-<!DOCTYPE HTML PUBLIC 
-	>
-<html>
-	<head>
-		<meta charset="UTF-8" />
-		<title>eae Mundo</title>
-		<style>
-			body {
-				background-color: rgb(255, 255, 255);
-			}
-			h1 { letter-spacing: 4px; 
-				text-align: center;
-			}
-			img#logo {
-				display: block;
-				margin-left: auto;
-				margin-right: auto;
-				width: 50%;
-				transition: width 1s
-			}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gearhead Blog - Apaixonados por Carros</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-			img#logo:hover {
-				background-color: #ff0000;
-				width: 60%;
-				transition: width 1s;
-			}	
-    		
-			#logo2 {
-				display: block;
-				margin-left: auto;
-				margin-right: auto;
-				width: 400px;
-			}
-		</style>
-		<script></script>
-	</head>
-	
-		
-<body bgcolor="blue" >
-	
-<h1> eae Mundo </h1>
-<h2> eae Mundo </h2>
-<a href="http://www.uach.mx" >Página UACH</a>
+    <header>
+        <div class="logo">Gearhead<span>Blog</span></div>
+        <nav>
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Notícias</a></li>
+                <li><a href="#">Avaliações</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<a href="http://www.uach.mx" ><img src="http://www.uach.mx/assets/img/custom/escudo_header_color_w.svg" width="20%"></a>
+    <section class="banner">
+        <h2>O Mundo dos Motores em Um Só Lugar</h2>
+        <p>Notícias, reviews e tudo sobre a cultura automotiva.</p>
+    </section>
 
-</br>
-</br>
-</br>	
+    <main class="container">
+        <section class="posts">
+            
+            <article class="post-card">
+                <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=800" alt="Superesportivo">
+                <div class="post-content">
+                    <span class="categoria">Superesportivos</span>
+                    <h3>O Futuro dos Hipercarros Elétricos</h3>
+                    <p>Como as novas tecnologias estão mudando o desempenho das pistas e das ruas...</p>
+                    <button class="btn-leia" onclick="curtirPost(1)">Curtir (<span id="curtidas-1">0</span>)</button>
+                </div>
+            </article>
 
-<a href="http://www.uach.mx" ><img id="logo" src="http://www.uach.mx/assets/img/custom/escudo_header_color_w.svg"></a>
+            <article class="post-card">
+                <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800" alt="Carro Clássico">
+                <div class="post-content">
+                    <span class="categoria">Clássicos</span>
+                    <h3>Ícones que Marcaram os Anos 90</h3>
+                    <p>Relembre os modelos que se tornaram lendas e ainda fazem o coração dos entusiastas bater forte.</p>
+                    <button class="btn-leia" onclick="curtirPost(2)">Curtir (<span id="curtidas-2">0</span>)</button>
+                </div>
+            </article>
 
-<h2> eae Mundo </h2>
+        </section>
+    </main>
 
+    <footer>
+        <p>&copy; 2026 Gearhead Blog. Criado por um apaixonado por carros.</p>
+    </footer>
 
-
-	</body>
+    <script src="script.js"></script>
+</body>
 </html>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Menu de Navegação */
+header {
+    background-color: #1a1a1a;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #ff3f3f; /* Vermelho esportivo */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff3f3f;
+}
+
+/* Banner */
+.banner {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200') no-repeat center center/cover;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.banner h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+/* Grid de Posts */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.post-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+}
+
+.post-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.post-content {
+    padding: 20px;
+}
+
+.categoria {
+    background-color: #ff3f3f;
+    color: white;
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.post-content h3 {
+    margin: 15px 0 10px 0;
+    font-size: 20px;
+}
+
+.post-content p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.btn-leia {
+    background-color: #1a1a1a;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-leia:hover {
+    background-color: #ff3f3f;
+}
+
+/* Rodapé */
+footer {
+    background-color: #1a1a1a;
+    color: #888;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 14px;
+}
+const contadorCurtidas = {
+    1: 0,
+    2: 0
+};
+
+function curtirPost(idPost) {
+    // Incrementa o número de curtidas
+    contadorCurtidas[idPost]++;
+    
+    // Atualiza o texto na tela
+    document.getElementById(`curtidas-${idPost}`).innerText = contadorCurtidas[idPost];
+}
